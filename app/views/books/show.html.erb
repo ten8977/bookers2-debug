@@ -43,8 +43,9 @@
         </tr>
 
       </table>
-
-<tr>
+<table>
+  <tbody>
+    <tr>
 
  <% @book.book_comments.each do |book_comment| %><!--コメント表示機能-->
     <td><%= link_to(@book.user) do %>
@@ -52,16 +53,18 @@
     <%= book_comment.user.name %>
     <% end %></td>
     <td><%= book_comment.comment %></td>
-    <% if book_comment.user == current_user %>
+    <td><% if book_comment.user == current_user %>
       <%= link_to "Destroy", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
-    <% end %>
+    <% end %></td>
   <% end %>
 
-</tr>
+    </tr>
+  </tbody>
+</table>
 
 <div>
   <%= form_with model: [@book, @book_comment] do |f| %><!--コメント投稿機能-->
-    <%= f.text_area :comment, rows: '5' %><br>
+    <%= f.text_area :comment, rows: '5', class: "w-100" %><br>
     <%= f.submit "送信" %>
   <% end %>
 </div>
