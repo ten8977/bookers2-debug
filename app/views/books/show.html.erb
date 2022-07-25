@@ -33,17 +33,37 @@
               <% end %>
               </td>
 
+              <td><p>コメント数：<%= @book.book_comments.count %></p></td>
+
             <% if @book.user == current_user %><!--もしこの投稿がログインしている人のなら-->
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
             <td><%= link_to 'Destroy', @book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
             <% end %>
 
-
-
-
-
         </tr>
+
       </table>
+
+<tr>
+
+ <% @book.book_comments.each do |book_comment| %><!--コメント表示機能-->
+    <td><%= link_to(@book.user) do %>
+    <p><%= image_tag book_comment.user.get_profile_image, size:'100x100' %></p>
+    <%= book_comment.user.name %>
+    <% end %></td>
+    <td><%= book_comment.comment %></td>
+  <% end %>
+
+</tr>
+
+<div>
+  <%= form_with model: [@book, @book_comment] do |f| %><!--コメント投稿機能-->
+    <%= f.text_area :comment, rows: '5' %><br>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
+
+
     </div>
   </div>
 </div>
