@@ -10,11 +10,11 @@
   </tr>
   <tr>
     <th>follows</th>
-    <th><%= user.followings.count %></th><!--ここに数を数えるコードを記述する-->
+    <th><%= link_to user.followings.count, user_followings_path(user) %></th><!--ここに数を数えるコードを記述する-->
   </tr>
   <tr>
     <th>followers</th>
-    <th><%= user.followers.count %></th><!--ここに数を数えるコードを記述する-->
+    <th><%= link_to user.followers.count, user_followers_path(user) %></th><!--ここに数を数えるコードを記述する-->
   </tr>
   <tr>
     <th>
