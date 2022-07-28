@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
   get 'home/about', to: 'homes#about', as: 'about'
+  get "search" => "searches#search" #検索機能
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
    resource :favorites, only: [:create, :destroy]
