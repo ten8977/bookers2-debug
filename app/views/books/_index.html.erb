@@ -17,12 +17,10 @@
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
 
-        <div class="likes_buttons_<%= book.id %>"><!--いいね機能-->
+        <td class="likes_buttons_<%= book.id %>"><!--いいね機能-->
           <%= render 'favorites/favorite-btn', book: book %>
-        </div>
-
-
-            <td>  <p><%= "コメント数：#{book.book_comments.count} " %></p></td>
+        </td>
+        <td>  <p><%= "コメント数：#{book.book_comments.count} " %></p></td>
 
       </tr>
     <% end %>
