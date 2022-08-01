@@ -1,5 +1,5 @@
 <div>
-  <%= form_with model: [@book, @book_comment] do |f| %><!--コメント投稿機能-->
+  <%= form_with model: [@book, @book_comment], local: false do |f| %><!--コメント投稿機能-->
     <%= f.text_area :comment, rows: '5', class: "w-100" %><br>
     <%= f.submit "送信" %>
   <% end %>
