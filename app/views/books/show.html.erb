@@ -22,7 +22,9 @@
           <%= render 'favorites/favorite-btn', book: @book %>
         </td>
 
-              <td><p>コメント数：<%= @book.book_comments.count %></p></td>
+              <td class="book-comment-count">
+                <%= render 'book_comments/book_comment_count', book: @book %>
+              </td>
 
             <% if @book.user == current_user %><!--もしこの投稿がログインしている人のなら-->
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
@@ -32,17 +34,15 @@
         </tr>
 
       </table>
-<table>
-  <tbody>
-    <div id="comments_area"><!--コメント一覧部分-->
+
+    <div class="book-comment-index"><!--コメント一覧部分-->
       <%= render 'book_comments/book_comments', book: @book %>
     </div>
 
 
 
 
-  </tbody>
-</table>
+
 
   <div class="new-comment"><!--コメント投稿部分-->
     <%= render 'book_comments/form', book: @book, book_comment: @book_comment %>

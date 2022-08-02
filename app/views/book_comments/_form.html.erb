@@ -1,6 +1,4 @@
-<div>
-  <%= form_with model: [@book, @book_comment], local: false do |f| %><!--コメント投稿機能-->
-    <%= f.text_area :comment, rows: '5', class: "w-100" %><br>
-    <%= f.submit "送信" %>
-  <% end %>
-</div>
+<%= form_with(model: [book, book_comment], local: false) do |f| %><!--コメント投稿機能-->
+  <%= f.text_area :comment, rows: '5', class: "w-100 comments_area" %><br>
+  <%= f.submit "送信" %>
+<% end %>
